@@ -50,7 +50,7 @@ class berichtenController extends Controller
         $post->tags = $request->input('tags');
         $post->save(); 
 
-        return redirect('/berichten')->with('succes', 'gebruiker is aangemaakt!');
+        return redirect('/berichten')->with('succes', 'Nieuw bericht is aangemaakt!');
     }
 
     /**
@@ -61,7 +61,8 @@ class berichtenController extends Controller
      */
     public function show($id)
     {
-        //
+        //$post = berichten::find($id); 
+        //return view('posts.show')->with('post',$post); 
     }
 
     /**
@@ -72,8 +73,10 @@ class berichtenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = berichten::find($id); 
+        return view('berichten.edit')->with('post',$post); 
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -84,7 +87,20 @@ class berichtenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this ->validate($request, [
+            'titel' => 'required',
+            'bericht' => 'required',
+            'tags' => 'required'
+        ]);
+
+        // items toevoegen aan de database
+        $post = berichten::find($id); 
+        $post->titel = $request->input('titel');
+        $post->bericht = $request->input('bericht');
+        $post->tags = $request->input('tags');
+        $post->save(); 
+
+        return redirect('/berichten')->with('succes', 'bericht is aangepast!');
     }
 
     /**
@@ -95,6 +111,8 @@ class berichtenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = berichten::find($id); 
+        $post -> delete(); 
+        return redirect('/berichten')-> with('succes', 'bericht is verwijderd');
     }
 }

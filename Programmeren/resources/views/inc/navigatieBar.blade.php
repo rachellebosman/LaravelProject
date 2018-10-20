@@ -12,7 +12,7 @@
         
         <div class="navbar">  
             <h2> Het Horeca klaag muurtje </h2>
-            <a href="/"> Homo </a> 
+            <a href="/"> Home </a> 
             <a href="/berichten"> Berichten </a> 
             <a href="/berichten/create"> Nieuw bericht </a> 
             <a href="#"> Uitloggen </a>  
