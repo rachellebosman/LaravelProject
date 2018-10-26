@@ -6,19 +6,16 @@
           left: 50%;
           transform: translate(-50%, -50%);
     }
+
+    body{
+        background-color:lightblue;
+    }
+</style>
     
-    </style>
+@extends('layouts.app')
     
-    @extends('layout.standaardLayout')
-    
-    @section('content')
-    
-        <br><br><br>
-       
-        <img src="img/logoProgrammeren2.png">
-    
-        
-        
-    @endsection
-    
+@section('content')
+    <br><br><br>
+    <img src="img/logoProgrammeren2.png">
+@endsection
     

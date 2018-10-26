@@ -48,6 +48,7 @@ class berichtenController extends Controller
         $post->titel = $request->input('titel');
         $post->bericht = $request->input('bericht');
         $post->tag = $request->input('tag');
+        $post->user_id = auth()->user()->id;
         $post->save(); 
 
         return redirect('/berichten')->with('succes', 'Nieuw bericht is aangemaakt!');

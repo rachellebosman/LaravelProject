@@ -10,5 +10,9 @@ class bericht extends Model
       public $table = 'berichts';
       // Primary key
       public $primaryKey = 'id';
+
+      public function user(){
+            return $this->belongsTo('App\user');
+      }
      
 }

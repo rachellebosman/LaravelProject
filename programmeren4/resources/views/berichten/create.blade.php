@@ -12,7 +12,7 @@
 </style> 
 
 
-@extends('layout.standaardLayout')
+@extends('layouts.app')
 
 @section ('content')
 

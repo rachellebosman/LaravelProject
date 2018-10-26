@@ -1,4 +1,8 @@
 <style>
+
+    *{
+        text-align:center;
+    }
     .titel {
         color: black;
     } 
@@ -21,27 +25,21 @@
     }
 </style> 
     
-@extends('layout.standaardLayout')
+@extends('layouts.app')
 @section('content')
     
-<br><br><br><br>
+<br><br>
 <h1> Overzicht van alle berichten </h1>
 <br> 
 
 @if(count($posts) > 0 )
         @foreach($posts as $post)
                 <div class="form-group berichten">
-                        <h3><a class="titel" href="/berichten/{{$post->id}}">{{$post ->titel}}</a></h3>
+                        <h3>{{$post ->titel}}</h3>
                         <p>{{$post ->bericht}} <br>
                         #{{$post ->tag}} <br>
-                        <small> Geschreven op: {{$post ->created_at}} </small>
-                        <a class="button" href="/berichten/{{$post->id}}/edit"> edit <a>
-                                            
-                        <!-- code vooor de delete optie --> 
-                        {!!Form::open(['action' => ['berichtenController@destroy', $post->id], 'method' => 'POST'])!!}
-                        {{Form::hidden('_method', 'DELETE')}}
-                        {{Form::submit('verwijder', ['class' => 'button'])}}
-                        {!!Form::close()!!}
+                        <small> Geschreven door {{ Auth::user()->name }} </small><br>
+                        <small>  {{$post ->created_at}} </small>            
                 </div>
         @endforeach
 @else 
