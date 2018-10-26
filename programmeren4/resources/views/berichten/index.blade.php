@@ -43,7 +43,7 @@
                 </div>
         @endforeach
 @else 
-        <p> Er zijn geen berichten op het moment. </p>
+        <p> Er zijn geen berichten op het moment</p>
 @endif
 
 @endsection
