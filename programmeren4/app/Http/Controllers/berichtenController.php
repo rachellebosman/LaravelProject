@@ -8,16 +8,32 @@ use App\bericht;
 
 class berichtenController extends Controller
 {
+
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $posts = bericht::all();
-        return view('berichten.index')->with('posts', $posts);
+        return view('berichten.index')->with('posts', $posts);  
     }
+
+   
 
     /**
      * Show the form for creating a new resource.
@@ -75,6 +91,12 @@ class berichtenController extends Controller
     public function edit($id)
     {
         $post = bericht::find($id); 
+
+        //controleren of het de juiste gebruiker is 
+        if(auth()->user()->id !==$post->user_id){
+            return redirect('/berichten'); //->with('error', 'error bericht' )
+        }
+
         return view('berichten.edit')->with('post',$post);
     }
 
@@ -112,7 +134,26 @@ class berichtenController extends Controller
     public function destroy($id)
     {
         $post = bericht::find($id); 
+        
+        //controleren of het de juiste gebruiker is 
+        if(auth()->user()->id !==$post->user_id){
+            return redirect('/berichten'); //->with('error', 'error bericht' )
+        }
+
         $post -> delete(); 
         return redirect('/berichten')-> with('succes', 'bericht is verwijderd');
     }
+
+    // searchbar functie 
+
+    public function search(Request $request){
+        $query = $request->input('query');
+        $berichten = bericht::where('bericht', 'like', "%$query%")->orWhere('titel', 'like', "%$query%")->get();
+        return view('berichten.search')->with('berichten', $berichten); 
+    }
+
+   
+
+
+
 }

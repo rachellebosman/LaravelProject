@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>HKM</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,20 +20,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style> 
-    .mijnstyle {
-    
-        position: fixed; 
-        top: 0; 
-        width: 100%; 
-
-        background-color: darkgrey;
-    
-    }
-
-    .naamnav {
-        color: white;
-    }
-    
+        .mijnstyle {
+            position: fixed; 
+            top: 0; 
+            width: 100%;    
+            background-color: darkgrey;       
+        }
+       .naamnav {
+            color: white;
+        }   
     </style>
 </head>
 <body>
@@ -73,7 +68,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <!-- links toevoegen voor dropdown menu --> 
                                     <a class="dropdown-item" href="/berichten"> Alle berichten</a>
+                                    <a class="dropdown-item" href="/berichten/create"> Nieuw bericht</a>
                                     <a class="dropdown-item" href="/home"> Mijn berichten</a> 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

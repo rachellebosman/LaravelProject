@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 Route::resource('berichten', 'berichtenController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/search', 'berichtenController@search');
