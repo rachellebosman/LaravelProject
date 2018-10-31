@@ -10,29 +10,21 @@
         text-align:center;
     }
 
-    .welkom {
-        margin-left: 30%;
-        margin-right: 30%;
+    .welkom { 
         text-align: center;
+        border: solid darkgrey 1px;
+        border-radius: 5px; 
+        background-color: white; 
+        padding: 100px;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
-
-  
-    .mijnbutton {
-        background-color: lightgrey;
-        color:white;
-        padding: 15px;
-        border:none;
-        border-radius: 5px;
-        margin: 5px     
-        }
-
-      .kutbutton{
-        float: right;
-
-        }
-
-        h3{
-            text-align: center;
+    
+    h3{
+        text-align: center;
         }
 
 </style> 
@@ -40,44 +32,20 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container tabel">
+<br><br>
+<div class="welkom">
+    <h2> Welkom, {{ Auth::user()->name }}! </h2>
 
-        <div class="welkom">
-            <br><br>
-            <h2> Welkom {{ Auth::user()->name }} </h2>
+        <!-- code voor success allert --> 
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
 
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+    <a class="btn" href="/berichten/create"> Nieuw bericht </a>
+    <a class="btn" href="/berichten"> Alle berichten </a>
+    <a class="btn" href="/mijnberichten"> Mijn berichten </a>
+</div>
 
-            <a href="/berichten/create"> Nieuw bericht </a>
-            <a href="/berichten"> Alle berichten </a>
-        </div>
-
-        <h3> Eigen berichten: </h3> 
-
-            @foreach($posts as $post)
-                <div class="berichten">
-                    <tr>
-
-                    <h4>{{$post->titel}}</h4> 
-
-                    <!-- code vooor de delete optie --> 
-                    {!!Form::open(['action' => ['berichtenController@destroy', $post->id], 'method' => 'POST'])!!}
-                    {{Form::hidden('_method', 'DELETE')}}
-                    {{Form::submit('verwijder', ['class' => ""])}}
-                    {!!Form::close()!!}
-
-                    <button class="" href="#"> bekijk bericht </button> 
-                  
-                    <button class ="" href="/berichten/{{$post->id}}/edit"> edit </button>
-
-                    
-                    
-                    </tr> 
-                </div>
-            @endforeach
-    </div>
 @endsection

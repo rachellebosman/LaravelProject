@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\bericht;
+use App\user;
 
 class berichtenController extends Controller
 {
@@ -29,7 +30,8 @@ class berichtenController extends Controller
 
     public function index()
     {
-        $posts = bericht::all();
+        //$posts = bericht::all();
+        $posts = bericht::orderBy('created_at','desc')->get();
         return view('berichten.index')->with('posts', $posts);  
     }
 
@@ -147,9 +149,14 @@ class berichtenController extends Controller
     // searchbar functie 
 
     public function search(Request $request){
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+
         $query = $request->input('query');
-        $berichten = bericht::where('bericht', 'like', "%$query%")->orWhere('titel', 'like', "%$query%")->get();
-        return view('berichten.search')->with('berichten', $berichten); 
+        $tag = $request->input('tag');
+        $berichten = bericht::where('bericht', 'like', "%$query%")->orWhere('titel', 'like', "%$query%")->where('tag', $tag)->get();
+
+        return view('berichten.search')->with('berichten', $berichten)->with('posts', $user->posts); 
     }
 
    

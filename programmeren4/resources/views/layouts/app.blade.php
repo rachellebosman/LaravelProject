@@ -30,6 +30,7 @@
             color: white;
         }   
     </style>
+    
 </head>
 <body>
     <div id="app">
@@ -69,13 +70,14 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <!-- links toevoegen voor dropdown menu --> 
-                                    <a class="dropdown-item" href="/berichten"> Alle berichten</a>
+                                    <a class="dropdown-item" href="/home"> Home</a>
                                     <a class="dropdown-item" href="/berichten/create"> Nieuw bericht</a>
-                                    <a class="dropdown-item" href="/home"> Mijn berichten</a> 
+                                    <a class="dropdown-item" href="/berichten"> Alle berichten</a>  
+                                    <a class="dropdown-item" href="/mijnberichten"> Mijn berichten</a> 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Uitloggen') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

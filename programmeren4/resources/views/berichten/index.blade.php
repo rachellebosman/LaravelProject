@@ -27,6 +27,10 @@
     small {
         color: grey;
     }
+
+    .selecttag{
+        width: 100px;
+    }
 </style> 
     
 @extends('layouts.app')
@@ -38,10 +42,16 @@
     <!-- zoek balk --> 
     {!! Form::open(['method'=>'GET','url'=>'search','class'=>'','role'=>'search'])  !!}
     <div class="">
-    <input type="text"  id="query" name="query" value="{{ request()->input('query')}}" placeholder="Zoek door berichten...">
-    <span class="">
-    <button class="" type="submit"> Zoek! </button>
-    </span>
+        <input type="text"  id="query" name="query" value="{{ request()->input('query')}}" placeholder="Zoek door berichten...">
+    
+        <select name="tag" id="tag" value="{{ request()->input('tag')}}" >
+            <option value="café">Café</option>
+            <option value="gasten">Gasten</option>
+            <option value="personeel">Personeel</option>
+            <option value="consumpties">Consumpties</option>
+        </select>
+
+        <button class="" type="submit"> Zoek! </button>
     </div>
     {!! Form::close() !!}
 
@@ -51,8 +61,9 @@
                         <h3>{{$post ->titel}}</h3>
                         <p>{{$post ->bericht}} <p>
                         <small> #{{$post ->tag}} 
-                        Geschreven door {{ Auth::user()->name }}
-                        {{$post ->created_at}} </small>            
+                        Geschreven door {{$post->user->name}} op
+                        {{$post ->created_at}} </small>  
+                                 
                 </div>
         @endforeach
 @else 

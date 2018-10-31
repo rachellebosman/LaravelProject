@@ -16,23 +16,28 @@
 
 </style> 
 
-
 @extends('layouts.app')
 @section('content')
 
-<h2> zoek resultaten </h2> 
+<br><br>
+<h3> Gevonden resultaten voor '{{ request() -> input('query')}}' & '{{ request() -> input('tag')}}': </h3> 
 
-<p> Gevonden resultaten voor '{{ request() -> input('query')}}' </p> 
+@if(count($berichten) > 0 )
 
-@foreach($berichten as $bericht)  <div class="form-group berichten">
-    <h3>{{$bericht ->titel}}</h3>
-    <p>{{$bericht ->bericht}} <p>
-    <small> #{{$bericht ->tag}} 
-    Geschreven door {{ Auth::user()->name }}
-    {{$bericht ->created_at}} </small>            
-</div>
-
+    @foreach($berichten as $bericht)  <div class="form-group berichten">
+        <h3>{{$bericht ->titel}}</h3>
+        <p>{{$bericht ->bericht}} <p>
+        <small> #{{$bericht ->tag}} 
+        Geschreven door {{$bericht->user->name}} op 
+        {{$bericht ->created_at}} </small>            
+    </div>
     
 @endforeach
+
+@else
+    <p> Er zijn geen resultaten gevonden </p>
+@endif
+
+<a href="/berichten"> terug naar overzicht </a> 
 
 @endsection
