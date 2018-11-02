@@ -9,7 +9,7 @@
        background-color: white; 
     }
     
-    .container{
+    *{
         text-align: center;
     }
 </style> 
@@ -18,15 +18,11 @@
 @section ('content')
 
 <br><br>
-
+@include('inc.messages')
 <div class="container">
-<h3> Bericht aanpassen </h3>
-
-   
+<h3> Bericht aanpassen </h3> 
        {!! Form::open(['action' => ['berichtenController@update', $post->id], 'method' => 'POST' ]) !!}
-       
            <div class="form-group nieuwBericht"> 
-
                {{Form::label('titel', 'Titel van het bericht: ')}}<br>
                {{Form::text('titel', $post->titel)}} <br>            
                {{Form::label('bericht', 'tekst: ')}} <br>
@@ -41,12 +37,9 @@
                {{Form::radio('tag', 'personeel') }}
                {{Form::label('tag', 'personeel')}}
                <br>
-
                {{Form::hidden('_method', 'PUT')}}
                {{Form::submit ('Aanpassen', ['class' => 'btn'])}}
-
            </div>
-
        {!! Form::close() !!}
 </div>      
 @endsection 

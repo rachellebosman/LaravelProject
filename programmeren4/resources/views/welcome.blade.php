@@ -1,4 +1,5 @@
 <style> 
+
     img{
          margin: 0;
           position: absolute;
@@ -10,6 +11,7 @@
     body{
         background-color:lightblue;
     }
+    
 </style>
     
 @extends('layouts.app')

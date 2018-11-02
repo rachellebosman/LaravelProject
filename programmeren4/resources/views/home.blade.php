@@ -1,4 +1,5 @@
 <style> 
+
    .berichten {  
         border-radius: 5px;
         margin: 5px;
@@ -25,7 +26,7 @@
     
     h3{
         text-align: center;
-        }
+    }
 
 </style> 
 
@@ -36,7 +37,7 @@
 <div class="welkom">
     <h2> Welkom, {{ Auth::user()->name }}! </h2>
 
-        <!-- code voor success allert --> 
+        <!-- code voor successvolle inlog --> 
         @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}

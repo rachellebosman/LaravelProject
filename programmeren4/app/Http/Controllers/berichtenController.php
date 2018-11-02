@@ -1,16 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\bericht;
 use App\user;
 
 class berichtenController extends Controller
 {
-
-
      /**
      * Create a new controller instance.
      *
@@ -20,7 +16,6 @@ class berichtenController extends Controller
     {
         $this->middleware('auth');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -34,8 +29,6 @@ class berichtenController extends Controller
         $posts = bericht::orderBy('created_at','desc')->get();
         return view('berichten.index')->with('posts', $posts);  
     }
-
-   
 
     /**
      * Show the form for creating a new resource.
@@ -80,8 +73,8 @@ class berichtenController extends Controller
      */
     public function show($id)
     {
-          //$post = berichten::find($id); 
-        //return view('posts.show')->with('post',$post); 
+        $post = bericht::find($id); 
+        return view('berichten.show')->with('post',$post); 
     }
 
     /**
@@ -143,24 +136,27 @@ class berichtenController extends Controller
         }
 
         $post -> delete(); 
-        return redirect('/berichten')-> with('succes', 'bericht is verwijderd');
+        return redirect('/mijnberichten')-> with('succes', 'bericht is verwijderd');
     }
 
     // searchbar functie 
-
     public function search(Request $request){
+
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-
         $query = $request->input('query');
         $tag = $request->input('tag');
-        $berichten = bericht::where('bericht', 'like', "%$query%")->orWhere('titel', 'like', "%$query%")->where('tag', $tag)->get();
+
+        //dit statement controleert of de gebruiker heeft gekozen voor een filter optie
+        if($tag == "x") {
+            //x is geen filter aanwezig dus alleen kijken naar het vrije text veld
+            $berichten = bericht::where('bericht', 'like', "%$query%")->orWhere('titel', 'like', "%$query%")->get();
+        }
+        else{
+            //wel een filter aanwezig
+            $berichten = bericht::where('bericht', 'like', "%$query%")->orWhere('titel', 'like', "%$query%")->where('tag', $tag)->get();
+        }
 
         return view('berichten.search')->with('berichten', $berichten)->with('posts', $user->posts); 
     }
-
-   
-
-
-
 }

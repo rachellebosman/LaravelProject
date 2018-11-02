@@ -41,7 +41,8 @@
 <body>
 
     @include('inc.navigatieBar')
-
+    
+    @include('inc.messages')
     @yield('content')
 
 </body>

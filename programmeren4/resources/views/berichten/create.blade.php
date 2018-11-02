@@ -1,5 +1,6 @@
 <style>
-    .container{
+
+    *{
         text-align: center;
     }
 
@@ -11,15 +12,17 @@
        margin-right: 30%;
        border: solid darkgrey 1px; 
        background-color: white; 
-}
+    }
 
 </style> 
 
 @extends('layouts.app')
 @section ('content')
 
-    <br><br>
-    <div class="container">   
+<br><br>
+@include('inc.messages')
+    <div class="container">  
+        
         <h3> Nieuw bericht aanmaken </h3>
         {!! Form::open(['action' => 'berichtenController@store', 'method' => 'POST' ]) !!}
             <div class="form-group nieuwBericht"> 
