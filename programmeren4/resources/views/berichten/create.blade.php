@@ -25,6 +25,7 @@
         
         <h3> Nieuw bericht aanmaken </h3>
         {!! Form::open(['action' => 'berichtenController@store', 'method' => 'POST' ]) !!}
+            {!!Csrf_field()!!} 
             <div class="form-group nieuwBericht"> 
                 {{Form::label('titel', 'Titel van het bericht: ')}}<br>
                 {{Form::text('titel', '')}}<br>

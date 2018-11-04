@@ -16,7 +16,6 @@
 
 @extends('layouts.app')
 @section ('content')
-
 <br><br>
 @include('inc.messages')
 <div class="container">

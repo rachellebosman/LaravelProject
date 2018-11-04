@@ -33,12 +33,10 @@
         margin-left: 35%;
         margin-right: 35%;
     }
-
 </style> 
     
 @extends('layouts.app')
-@section('content')
-    
+@section('content')    
 <br><br>
 @include('inc.messages')
 <h2> Berichten </h2>
@@ -76,5 +74,4 @@
 @else 
         <p> Er zijn geen berichten op het moment</p>
 @endif
-
 @endsection

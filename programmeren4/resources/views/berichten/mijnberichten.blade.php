@@ -1,5 +1,4 @@
 <style> 
-
     * {
         text-align: center;
     }
@@ -35,7 +34,6 @@
     h3{
         text-align: center;
     }
-
 </style> 
  
  @extends('layouts.app')

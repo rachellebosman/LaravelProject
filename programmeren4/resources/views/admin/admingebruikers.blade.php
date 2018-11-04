@@ -20,7 +20,6 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
-
 </style> 
         
 @extends('admin.adminnav')
@@ -31,18 +30,14 @@
 <table>
     <tr> 
         <th>Naam</th>
-        <th>Email</th>
-        <th>Aantal berichten </th> 
-        
+        <th>Email</th>       
     </tr>
         
     @if(count($posts) > 0 )
         @foreach($posts as $post)
             <tr>                          
                 <td>{{$post ->name}}</td> 
-                <td>{{$post->email}}</td>
-                <td> </td> 
-                
+                <td>{{$post->email}}</td> 
             </tr>
         @endforeach
 </table>

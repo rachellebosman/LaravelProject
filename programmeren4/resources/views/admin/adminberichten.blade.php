@@ -29,10 +29,8 @@
 <br><br>
 <h1> Overzicht van alle berichten </h1> 
 <br>
-
 <form action="{{action('adminController@updateberichten')}}", method="POST">
 {{ csrf_field() }} 
-
 <table>
     <tr> 
         <th>Titel</th>
@@ -53,19 +51,13 @@
             @endforeach
 
             <tr> 
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th><input type="submit" value="Aanpassen"></th>    
+                <th></th>
+                <th></th>
+                <th></th>
+                <th><input type="submit" value="Aanpassen"></th>    
             </tr> 
-
-        </table> 
-    </form>
-
-      
-          
-
-
+</table> 
+</form>
     @else 
         <p> Er zijn geen berichten op het moment</p>
     @endif
