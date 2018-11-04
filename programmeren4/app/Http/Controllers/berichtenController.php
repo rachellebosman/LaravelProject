@@ -159,4 +159,5 @@ class berichtenController extends Controller
 
         return view('berichten.search')->with('berichten', $berichten)->with('posts', $user->posts); 
     }
+
 }

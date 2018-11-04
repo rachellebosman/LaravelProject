@@ -49,8 +49,8 @@
             <input type="text" class="form-control" id="query" name="query" value="{{ request()->input('query')}}" placeholder="Zoek door berichten...">
          
             <select name="tag" class="form-control" id="tag" value="{{ request()->input('tag')}}" placeholder="filter">
-                <option value="" disabled selected>Filter optie</option>
-                <option value="x">Geen #tag</option>
+                
+                <option value="x">filter optie</option>
                 <option value="café">#Café</option>
                 <option value="gasten">#Gasten</option>
                 <option value="personeel">#Personeel</option>

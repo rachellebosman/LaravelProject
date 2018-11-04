@@ -24,7 +24,7 @@
             position: fixed; 
             top: 0; 
             width: 100%;    
-            background-color: darkgrey;       
+            background-color: lightblue;       
         }
        .naamnav {
             color: white;
@@ -36,7 +36,7 @@
     <div id="app">
         <nav class="mijnstyle navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/admin') }}">
                     Het horeca klaag muurtje
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -51,19 +51,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Aanmelden') }}</a>
-                                @endif
-                            </li>
-                        @else
-
-
+                     
 
                             <li class="nav-item dropdown">
                               
@@ -73,10 +61,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <!-- links toevoegen voor dropdown menu --> 
-                                    <a class="dropdown-item" href="/home"> Home</a>
-                                    <a class="dropdown-item" href="/berichten/create"> Nieuw bericht</a>
-                                    <a class="dropdown-item" href="/berichten"> Alle berichten</a>  
-                                    <a class="dropdown-item" href="/mijnberichten"> Mijn berichten</a> 
+                                    <a class="dropdown-item" href="/admin"> Home</a>
+                                    <a class="dropdown-item" href="/adminberichten"> Berichten</a>  
+                                    <a class="dropdown-item" href="/admingebruikers"> Gebruikers</a> 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -88,7 +75,7 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        
                     </ul>
                 </div>
             </div>
