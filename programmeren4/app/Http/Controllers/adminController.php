@@ -46,9 +46,25 @@ class adminController extends Controller
         return view('admin.admingebruikers')->with('posts', $posts);
     }
 
-    public function updateberichten(){
+    public function updateberichten(Request $request){
         $posts = bericht::orderBy('created_at','desc')->get();
-        return view('admin.adminberichten')->with('posts', $posts);
+
+        $this -> validate($request, [
+         
+            'status' => 'required'
+        ]);
+
+
+        //$post = bericht::find($id); 
+
+        $id = $request->get('id');
+       
+      
+        $post = bericht::find($id);
+        $post->status = $request->input("status");
+        $post->save(); 
+        
+        return redirect('adminberichten')->with('posts', $posts);
     }
     
 

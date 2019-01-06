@@ -26,8 +26,15 @@ class berichtenController extends Controller
     public function index()
     {
         //$posts = bericht::all();
+
         $posts = bericht::orderBy('created_at','desc')->get();
+
+        
+
+        
         return view('berichten.index')->with('posts', $posts);  
+
+        
     }
 
     /**

@@ -60,16 +60,26 @@
         </div>
     {!! Form::close() !!}
 
-@if(count($posts) > 0 )
+@if(count($posts) > 0  )
         @foreach($posts as $post)
-                <div class="form-group berichten">
-                    <h3>{{$post ->titel}}</h3>
-                    <p>{{$post ->bericht}} <p>
-                    <small>
-                        Geschreven door {{$post->user->name}} op {{$post ->created_at}} 
-                        <br>#{{$post ->tag}}
-                    </small>             
-                </div>
+                
+
+                        <!-- controleren of het bericht getoont mag worden -->
+                        @if ( $post->status == 0) 
+                        
+                            <div class="form-group berichten">
+
+                            <h3>{{$post ->titel}}</h3>
+                            <p>{{$post ->bericht}} <p>
+                            <small>
+                                Geschreven door {{$post->user->name}} op {{$post ->created_at}} 
+                                <br>#{{$post ->tag}}
+                            </small> 
+
+                            </div>
+                    
+                        @endif
+                
         @endforeach
 @else 
         <p> Er zijn geen berichten op het moment</p>
