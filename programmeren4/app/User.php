@@ -45,6 +45,10 @@ class User extends Authenticatable
     return $this->type === self::ADMIN_TYPE;
 }
 
+public function bericht(){
+    return $this->belongsTo('App\bericht', 'user_id');
+}
+
    
 
 }

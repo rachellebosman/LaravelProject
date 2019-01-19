@@ -27,26 +27,48 @@ class adminController extends Controller
     public function index()
     {
         return view('home');
+
+
+
     }
+
+
 
     public function admin()
     {
+     
+
         return view('admin');
+
+        
     }
 
     public function berichten()
     { 
         $posts = bericht::orderBy('created_at','desc')->get();
+
+        //$postsCount = bericht::with('user_id')->get(); 
+
+        //return view('admin.adminberichten')->with('posts', $posts)->with('postsCount', $postsCount);
         return view('admin.adminberichten')->with('posts', $posts);
     }
 
     public function gebruikers()
     {
-        $posts = user::orderBy('created_at','desc')->get();
-        return view('admin.admingebruikers')->with('posts', $posts);
+        //$posts = user::orderBy('created_at','asc')->get();
+        //return view('admin.admingebruikers')->with('posts', $posts);
+      
+        
+        //$x = bericht::orderBy('user_id', 'desc')->get();
+        //return view('admin.admingebruikers')->with('posts', $posts)->with('x', $x);
+    
+        $posts = user::with('bericht')->get();
+        $users = bericht::with('user')->get();
+        return view('admin.admingebruikers')->with('posts', $posts)->with('user', $users);
     }
 
     public function updateberichten(Request $request){
+
         $posts = bericht::orderBy('created_at','desc')->get();
 
         $this -> validate($request, [

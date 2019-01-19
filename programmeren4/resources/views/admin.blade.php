@@ -49,6 +49,9 @@
         
         <a class="btn" href="/adminberichten"> Berichten beheren </a>
         <a class="btn" href="/admingebruikers"> Gebruikers beheren </a>
+
+       
+
          
      </div>
      

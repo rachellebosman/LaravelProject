@@ -34,6 +34,7 @@
 <table>
 
     <tr> 
+        <th> </th> 
         <th>Titel</th>
         <th>Geschreven door</th>
         <th>Datum </th>
@@ -42,13 +43,16 @@
    
     @if(count($posts) > 0 )
     @foreach($posts as $post)
-        <tr>                  
+        <tr>      
+            
+            <td>{{$post->user_id}}</td> 
             <td>{{$post ->titel}}</td> 
             <td>{{$post->user->name}}</td>
             <td>{{$post ->created_at}}</td>
             
 
             <form action="{{action('adminController@updateberichten')}}", method="POST">
+                @csrf
                 
                 <input type="hidden" name="id" value="{{$post->id}} ">
 
@@ -63,6 +67,8 @@
          
             </form>                       
         </tr>
+
+       
 
     @endforeach
     
